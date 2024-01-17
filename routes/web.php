@@ -2,28 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\AuthController;
-use App\Http\Controllers\Backend\PageController;
-use App\Http\Controllers\Backend\DarkModeController;
-use App\Http\Controllers\Backend\ColorSchemeController;
-
-use App\Http\Controllers\Backend\BackendPageController;
-use App\Http\Controllers\Backend\LogsController;
-use App\Http\Controllers\Backend\UsersController;
-use App\Http\Controllers\Backend\CategoriesController;
-use App\Http\Controllers\Backend\NewsController;
-use App\Http\Controllers\Backend\BrandsController;
-use App\Http\Controllers\Backend\ModelsController;
-use App\Http\Controllers\Backend\GenerationsController;
-use App\Http\Controllers\Backend\Sub_modelsController;
-use App\Http\Controllers\Backend\PostsController;
-use App\Http\Controllers\Backend\CustomersController;
-use App\Http\Controllers\Backend\ContactsController;
-
-use App\Http\Controllers\Frontend\QrCodeController;
-use App\Http\Controllers\Frontend\FrontendPageController;
-use App\Http\Controllers\Frontend\SmsController;
-use App\Http\Controllers\Frontend\PostController;
 
 /*
 |--------------------------------------------------------------------------
