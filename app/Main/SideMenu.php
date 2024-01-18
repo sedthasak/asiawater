@@ -20,131 +20,171 @@ class SideMenu
                 'title' => 'แดชบอร์ด'
             ],
             
+            // 'customers' => [
+            //     'icon' => 'Users',
+            //     'route_name' => 'BN_customers',
+            //     'params' => [],
+            //     'title' => 'ลูกค้า'
+            // ],
+
+            // 'posts' => [
+            //     'icon' => 'File',
+            //     'route_name' => 'BN_posts',
+            //     'params' => [],
+            //     'title' => 'โพสท์ขายรถ'
+            // ],
+            // 'car' => [
+            //     'icon' => 'Box',
+            //     'title' => 'ข้อมูลรถ',
+            //     'sub_menu' => [
+            //         'caroverall' => [
+            //             'icon' => 'Sidebar',
+            //             'route_name' => 'BN_car',
+            //             'params' => [],
+            //             'title' => 'ภาพรวม'
+            //         ],
+            //         'brands' => [
+            //             'icon' => 'Sidebar',
+            //             'route_name' => 'BN_brands',
+            //             'params' => [],
+            //             'title' => 'ยี่ห้อรถ'
+            //         ],
+            //         'models' => [
+            //             'icon' => 'Package',
+            //             'route_name' => 'BN_carmd',
+            //             'params' => [],
+            //             'title' => 'รุ่นรถ'
+            //         ],
+            //         'generations' => [
+            //             'icon' => 'Package',
+            //             'route_name' => 'BN_generations',
+            //             'params' => [],
+            //             'title' => 'โฉม'
+            //         ],
+            //         'sub_model' => [
+            //             'icon' => 'Box',
+            //             'route_name' => 'BN_sub_models',
+            //             'params' => [],
+            //             'title' => 'รุ่นย่อย'
+            //         ],
+            //     ]
+            // ],
+            // 'cat' => [
+            //     'icon' => 'Grid',
+            //     'route_name' => 'BN_categories',
+            //     'params' => [],
+            //     'title' => 'หมวดหมู่'
+            // ],
+            // // 'tag' => [
+            // //     'icon' => 'Tag',
+            // //     'route_name' => 'BN_tags',
+            // //     'params' => [],
+            // //     'title' => 'แท็ก'
+            // // ],
+            // 'news' => [
+            //     'icon' => 'File-Text',
+            //     'route_name' => 'BN_news',
+            //     'params' => [],
+            //     'title' => 'ข่าว'
+            // ],
+            // 'users' => [
+            //     'icon' => 'Users',
+            //     'route_name' => 'BN_user',
+            //     'params' => [],
+            //     'title' => 'ยูสเซอร์'
+            // ],
+            // 'contacts' => [
+            //     'icon' => 'Phone Forwarded',
+            //     'route_name' => 'BN_contacts',
+            //     'params' => [],
+            //     'title' => 'ติดต่อ'
+            // ],
+
+
             'customers' => [
-                'icon' => 'Users',
-                'route_name' => 'BN_customers',
+                'icon' => 'Book Open',
+                'route_name' => 'salesdata',
                 'params' => [],
-                'title' => 'ลูกค้า'
+                'title' => 'รายงาน'
             ],
 
-            'posts' => [
-                'icon' => 'File',
-                'route_name' => 'BN_posts',
-                'params' => [],
-                'title' => 'โพสท์ขายรถ'
-            ],
-            'car' => [
-                'icon' => 'Box',
-                'title' => 'ข้อมูลรถ',
-                'sub_menu' => [
-                    'caroverall' => [
-                        'icon' => 'Sidebar',
-                        'route_name' => 'BN_car',
-                        'params' => [],
-                        'title' => 'ภาพรวม'
-                    ],
-                    'brands' => [
-                        'icon' => 'Sidebar',
-                        'route_name' => 'BN_brands',
-                        'params' => [],
-                        'title' => 'ยี่ห้อรถ'
-                    ],
-                    'models' => [
-                        'icon' => 'Package',
-                        'route_name' => 'BN_carmd',
-                        'params' => [],
-                        'title' => 'รุ่นรถ'
-                    ],
-                    'generations' => [
-                        'icon' => 'Package',
-                        'route_name' => 'BN_generations',
-                        'params' => [],
-                        'title' => 'โฉม'
-                    ],
-                    'sub_model' => [
-                        'icon' => 'Box',
-                        'route_name' => 'BN_sub_models',
-                        'params' => [],
-                        'title' => 'รุ่นย่อย'
-                    ],
-                ]
-            ],
-            'cat' => [
-                'icon' => 'Grid',
-                'route_name' => 'BN_categories',
-                'params' => [],
-                'title' => 'หมวดหมู่'
-            ],
-            // 'tag' => [
-            //     'icon' => 'Tag',
-            //     'route_name' => 'BN_tags',
-            //     'params' => [],
-            //     'title' => 'แท็ก'
-            // ],
-            'news' => [
-                'icon' => 'File-Text',
-                'route_name' => 'BN_news',
-                'params' => [],
-                'title' => 'ข่าว'
-            ],
-            'users' => [
-                'icon' => 'Users',
-                'route_name' => 'BN_user',
-                'params' => [],
-                'title' => 'ยูสเซอร์'
-            ],
-            'contacts' => [
-                'icon' => 'Phone Forwarded',
-                'route_name' => 'BN_contacts',
-                'params' => [],
-                'title' => 'ติดต่อ'
-            ],
+            'devider',
+
             'setting' => [
                 'icon' => 'Settings',
-                // 'route_name' => 'BN_setting',
-                // 'params' => [],
-                'title' => 'ตั้งค่าระบบ',
-                'sub_menu' => [
-                    'slide' => [
-                        'icon' => 'Image',
-                        'route_name' => 'BN_slide',
-                        'params' => [],
-                        'title' => 'ตั้งค่าแบนเนอร์'
-                    ],
-                    'setfooter' => [
-                        'icon' => 'Sidebar',
-                        'route_name' => 'BN_setfooter',
-                        'params' => [],
-                        'title' => 'ตั้งค่า footer'
-                    ],
-                    'termcondition' => [
-                        'icon' => 'Sidebar',
-                        'route_name' => 'BN_termcondition',
-                        'params' => [],
-                        'title' => 'ข้อกำหนดในการให้บริการ'
-                    ],
-                    'privacypolicy' => [
-                        'icon' => 'Sidebar',
-                        'route_name' => 'BN_privacypolicy',
-                        'params' => [],
-                        'title' => 'นโยบายความเป็นส่วนตัว'
-                    ],
-                ]
-            ],
-            'devider',
-            'logs' => [
-                'icon' => 'Book',
-                'route_name' => 'BN_logs',
+                'route_name' => 'BN_setting',
                 'params' => [],
-                'title' => 'Log'
+                'title' => 'ตั้งค่าระบบ'
             ],
+
             
-            'dev' => [
-                'icon' => 'Cloud-Lightning',
-                'route_name' => 'BN_dev',
-                'params' => [],
-                'title' => 'ผู้พัฒนาระบบ'
-            ],
+
+
+            // 'setting' => [
+            //     'icon' => 'Settings',
+            //     // 'route_name' => 'BN_setting',
+            //     // 'params' => [],
+            //     'title' => 'ตั้งค่าระบบ',
+            //     // 'sub_menu' => [
+            //     //     'slide' => [
+            //     //         'icon' => 'Image',
+            //     //         'route_name' => 'BN_slide',
+            //     //         'params' => [],
+            //     //         'title' => 'ตั้งค่าแบนเนอร์'
+            //     //     ],
+            //     //     'setfooter' => [
+            //     //         'icon' => 'Sidebar',
+            //     //         'route_name' => 'BN_setfooter',
+            //     //         'params' => [],
+            //     //         'title' => 'ตั้งค่า footer'
+            //     //     ],
+            //     //     'termcondition' => [
+            //     //         'icon' => 'Sidebar',
+            //     //         'route_name' => 'BN_termcondition',
+            //     //         'params' => [],
+            //     //         'title' => 'ข้อกำหนดในการให้บริการ'
+            //     //     ],
+            //     //     'privacypolicy' => [
+            //     //         'icon' => 'Sidebar',
+            //     //         'route_name' => 'BN_privacypolicy',
+            //     //         'params' => [],
+            //     //         'title' => 'นโยบายความเป็นส่วนตัว'
+            //     //     ],
+            //     // ]
+            // ],
+            // 'devider',
+            // 'logs' => [
+            //     'icon' => 'Book',
+            //     'route_name' => 'BN_logs',
+            //     'params' => [],
+            //     'title' => 'Log'
+            // ],
+            
+            // 'dev' => [
+            //     'icon' => 'Cloud-Lightning',
+            //     'route_name' => 'BN_dev',
+            //     'params' => [],
+            //     'title' => 'ผู้พัฒนาระบบ'
+            // ],
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // 'chat' => [
             //     'icon' => 'message-square',
             //     'route_name' => 'chat',

@@ -535,5 +535,22 @@ class BackendPageController extends Controller
             'default_pagename' => 'แดชบอร์ด',
         ]);
     }
+
+
+
+    public function sales()
+    {
+        return dd("sales");
+        $sales = Sale::all();
+
+        return view('backend/sales', compact('sales'));
+    }
+
+    public function show($date)
+    {
+        $sales = Sale::whereDate('sale_date', $date)->get();
+
+        return response()->json($sales);
+    }
     
 }

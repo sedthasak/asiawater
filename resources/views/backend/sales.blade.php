@@ -1,17 +1,17 @@
-@extends('../backend/layout/side-menu')
+<!-- resources/views/sales/index.blade.php -->
 
-@section('subhead')
-    <title>Backend - {{$default_pagename}}</title>
-@endsection
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Data</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <!-- Include other necessary CSS files for datepicker and styles -->
+</head>
+<body>
 
-@section('subcontent')
-
-    <div class="intro-y mt-8 flex flex-col items-center sm:flex-row">
-        <h2 class="mr-auto text-lg font-medium">{{$default_pagename}}</h2>
-    </div>
-
-    <div class="">
-        <input type="text" id="datepicker">
+    <input type="text" id="datepicker">
     
     <table id="sales-table">
         <thead>
@@ -60,14 +60,5 @@
             });
         });
     </script>
-    </div>
-        
-@endsection
-
-@section('script')
-<script>
-
-</script>
-
-
-@endsection
+</body>
+</html>

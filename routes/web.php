@@ -2,6 +2,28 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\PageController;
+use App\Http\Controllers\Backend\DarkModeController;
+use App\Http\Controllers\Backend\ColorSchemeController;
+
+use App\Http\Controllers\Backend\BackendPageController;
+use App\Http\Controllers\Backend\LogsController;
+use App\Http\Controllers\Backend\UsersController;
+use App\Http\Controllers\Backend\CategoriesController;
+use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\BrandsController;
+use App\Http\Controllers\Backend\ModelsController;
+use App\Http\Controllers\Backend\GenerationsController;
+use App\Http\Controllers\Backend\Sub_modelsController;
+use App\Http\Controllers\Backend\PostsController;
+use App\Http\Controllers\Backend\CustomersController;
+use App\Http\Controllers\Backend\ContactsController;
+
+use App\Http\Controllers\Frontend\QrCodeController;
+use App\Http\Controllers\Frontend\FrontendPageController;
+use App\Http\Controllers\Frontend\SmsController;
+use App\Http\Controllers\Frontend\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -195,6 +217,8 @@ Route::middleware('auth')->group(function() {
     Route::group(['middleware' => ['job_access']], function () {
 
         Route::prefix('backend')->group(function () {
+            Route::get('/sales-data', [BackendPageController::class, 'sales'])->name('salesdata');
+            Route::get('/sales-data/{date}', 'BackendPageController@show');
 
 
             Route::prefix('customers')->group(function () {
@@ -324,7 +348,7 @@ Route::middleware('auth')->group(function() {
                 Route::post('setfooter-update', [BackendPageController::class, 'BN_setfooterupdate'])->name('BN_setfooterupdate');
                 Route::post('termcondition-update', [BackendPageController::class, 'BN_termcondition_update'])->name('BN_termcondition_update');
                 Route::post('privacypolicy-update', [BackendPageController::class, 'BN_privacypolicy_update'])->name('BN_privacypolicy_update');
-
+                
 
             });
 
