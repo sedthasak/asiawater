@@ -75,11 +75,11 @@ class FrontendPageController extends Controller
     }
 
     public function callback(Request $request) {
-        $data = [""];
-        Transactions::create();
-        return redirect('thank');
+        // $data = [""];
+        // Transactions::create();
+        // return redirect('thank');
 
-
+        return $request;
 
 
         $orderNo = $request->orderNo;
@@ -124,5 +124,9 @@ class FrontendPageController extends Controller
                 }
             }
         }
+    }
+
+    public function chillpaytest() {
+        return view('frontend.chillpay-test');
     }
 }

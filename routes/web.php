@@ -39,6 +39,7 @@ Route::middleware('store.auth')->group(function() {
     Route::get('push', [FrontendPageController::class, 'push']);
     Route::get('qr-code', [FrontendPageController::class, 'qrcode']);
     Route::get('thank', [FrontendPageController::class, 'thank']);
+    Route::get('chillpay-test', [FrontendPageController::class, 'chillpaytest']);
 });
 
 
