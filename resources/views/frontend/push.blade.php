@@ -7,19 +7,19 @@
     <div class="ColBodyDetail">
 
         <div class="Col-Logo-Home mt-5 mb-5">
-            <img src="./images/logo.jpg" alt="">
+            <img src="{{ asset('asiawater/images/logo.jpg') }}" alt="">
         </div>
 
         <div class="BoxBody-White">
             <div class="container">
                 <div class="WarpCol-Detail">
                     <div class="d-flex flex-column align-items-center">
-                        <a class="btn ButtonClose" href="detailwater-ro.php">
-                            <img src="./images/ic-left-as.svg" alt="">
+                        <a class="btn ButtonClose" href="{{ url()->previous() }}">
+                            <img src="{{ asset('asiawater/images/ic-left-as.svg') }}" alt="">
                         </a>
-                        <img class="ImgDetail" src="./images/water-drop.gif" alt="">
+                        <img class="ImgDetail" src="{{ asset('asiawater/images/water-drop.gif') }}" alt="">
                         <p class="Text-wt-detail-Select">
-                            R.O. Water
+                            {{session('watertype')}}
                         </p>
                         <div class="BoxCol-Price-Select">
                         </div>
@@ -32,7 +32,7 @@
                         <div class="Div-Paymentoption">
                             <div class="ShowNumber">
                                 <p class="Text-Head-Shownumber">
-                                    5
+                                    @if(!empty(session('total'))){{session('total')}}@else {{'0'}} @endif
                                 </p>
                                 <p class="Text-Detail-Shownumber">
                                     remaining balance
@@ -40,11 +40,11 @@
                             </div>
                             <div class="Warp-BoxButton-Push">
                                 <button class="btn ButtonStart">
-                                    <img src="./images/play-as.png" alt="">
+                                    <img src="{{ asset('asiawater/images/play-as.png') }}" alt="">
                                     START
                                 </button>
                                 <button class="btn ButtonStart">
-                                    <img src="./images/stop-as.png" alt="">
+                                    <img src="{{ asset('asiawater/images/stop-as.png') }}" alt="">
                                     STOP
                                 </button>
                             </div>

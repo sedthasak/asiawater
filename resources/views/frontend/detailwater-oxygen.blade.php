@@ -16,7 +16,7 @@
                         <a class="btn ButtonClose" href="{{ url('/') }}">
                             <img src="{{ asset('asiawater/images/ic-close.svg') }}" alt="">
                         </a>
-                        <img class="ImgDetail" src="{{ asset('asiawater/images/ro.gif') }}" alt="">
+                        <img class="ImgDetail" src="{{ asset('asiawater/images/love.gif') }}" alt="">
                         <p class="Text-wt-detail">
                             Oxygen Water
                         </p>
@@ -29,17 +29,26 @@
                     <div class="ColPrice">
                         <div class="quantity">
                             <button class="minus" aria-label="Decrease">&minus;</button>
-                            <input type="number" class="input-box TextNumber" value="1" min="1" max="10">
+                            <form method="POST" id="myform" action="{{ url('quantity') }}" enctype="multipart/form-data">
+                                @csrf
+                                <input type="number" name="quantity" class="input-box TextNumber" value="1" min="1" max="10">
+                                <input type="hidden" name="watertype" value="oxygen">
+                            </form>
                             <button class="plus" aria-label="Increase">&plus;</button>
                         </div>
 
-                        <a href="{{ url('select-payment') }}" class="btn ButtonDone">
-                            DONE
-                        </a>
+                        <button id="btnsubmit" type="button" class="btn ButtonDone">DONE</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $('#btnsubmit').click(function(e){
+            $('#myform').submit();
+        });
+    </script>
 
     @include('frontend.includes.inc_script')

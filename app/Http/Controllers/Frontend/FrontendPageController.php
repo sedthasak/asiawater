@@ -129,4 +129,27 @@ class FrontendPageController extends Controller
     public function chillpaytest() {
         return view('frontend.chillpay-test');
     }
+
+    public function quantity(Request $request) {
+        $request->validate([
+            'watertype' => 'required|string',
+            'quantity' => 'required|integer|min:1',
+        ]);
+    
+        // เก็บประเภทน้ำลงใน session
+        session(['watertype' => $request->watertype]);
+        session(['quantity' => $request->quantity]);
+
+        $store = DB::table('stores')->where('id', Auth::guard('store')->id())->first();
+        if (session('watertype') == 'ro') {
+            session(['price' => $store->ro * session('quantity')]);
+        }
+        elseif (session('watertype') == 'alkaline') {
+            session(['price' => $store->alkaline * session('quantity')]);
+        }
+        elseif (session('watertype') == 'oxygen') {
+            session(['price' => $store->oxygen * session('quantity')]);
+        }
+        return redirect('select-payment');
+    }
 }

@@ -3,7 +3,6 @@
 
 
     @include('frontend.includes.inc_topmenu')
-
     <div class="ColBodyDetail">
 
         <div class="Col-Logo-Home mt-5 mb-5">
@@ -17,19 +16,19 @@
                         <a class="btn ButtonClose" href="{{ url()->previous() }}">
                             <img src="{{ url('asiawater/images/ic-left-as.svg') }}" alt="">
                         </a>
-                        <img class="ImgDetail-Select" src="{{ url('asiawater/images/ro.gif') }}" alt="">
+                        <img class="ImgDetail-Select" src="@if (session('watertype') == 'ro'){{ url('asiawater/images/ro.gif') }}@elseif (session('watertype') == 'alkaline'){{ url('asiawater/images/oxygen.gif') }}@elseif (session('watertype') == 'oxygen'){{ url('asiawater/images/love.gif') }}@endif" alt="">
                         <p class="Text-wt-detail-Select">
-                            R.O. Water
+                            @if (session('watertype') == 'ro')R.O. Water @elseif (session('watertype') == 'alkaline')Alkiline Water @elseif (session('watertype') == 'oxygen')Oxygen Water  @endif
                         </p>
                         <div class="BoxCol-Price-Select">
                             <p class="TextPrice-Select-Bath">
                                 price
                             </p>
                             <p class="Text-wt-detail me-4 ms-4">
-                                5
+                                {{session('price')}}
                             </p>
                             <p class="TextPrice-Select-Bath">
-                                bath
+                                baht
                             </p>
                         </div>
                         <p class="Text-Paymentopton">
