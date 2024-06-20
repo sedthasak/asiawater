@@ -19,6 +19,7 @@ use Illuminate\Validation\Rules;
 
 use App\Models\User;
 use App\Models\usersModel;
+use DB;
 
 class UsersController extends Controller
 {
@@ -62,6 +63,62 @@ class UsersController extends Controller
         return view('backend/users', [ 
             'default_pagename' => 'ยูสเซอร์',
             'User' => $User,
+            'query' => $query,
+        ]);
+    }
+
+    public function BN_stores_add()
+    {
+        return view('backend/stores-add', [ 
+            'default_pagename' => 'เพิ่มร้าน',
+        ]);
+    }
+    public function BN_stores_edit(Request $request, $id)
+    {
+        $user = usersModel::find($id);
+        return view('backend/stores-edit', [ 
+            'default_pagename' => 'แก้ไขร้าน',
+            'user' => $user,
+        ]);
+    }
+    public function BN_stores_edit_action(Request $request, $id)
+    {
+        $user = usersModel::find($id);
+        return view('backend/stores-edit', [ 
+            'default_pagename' => 'แก้ไขร้าน',
+            'user' => $user,
+        ]);
+    }
+    public function BN_stores_delete(Request $request, $id)
+    {
+        DB::table('stores')->where('id', $id)->delete();
+        return redirect()->with('BN_stores');
+    }
+
+    public function BN_stores(Request $request)
+    {
+        $stores = DB::table('stores')
+        // ->where('phone',$request->s)
+        ->orderBy('id', 'desc')
+        ->paginate(16);
+
+        $query = DB::table('stores')
+            ->orderBy('id', 'desc');
+
+        // if ($request->filled('keyword')) {
+        //     $keyword = $request->input('keyword');
+        //     $query->where(function ($query) use ($keyword) {
+        //         $query->where('name', 'LIKE', '%' . $keyword . '%')
+        //             ->orWhere('email', 'LIKE', '%' . $keyword . '%');
+        //     });
+        // }
+
+        $resultPerPage = 24;
+        $query = $query->paginate($resultPerPage);
+
+        return view('backend/stores', [ 
+            'default_pagename' => 'ร้าน',
+            'User' => $stores,
             'query' => $query,
         ]);
     }
@@ -134,6 +191,37 @@ class UsersController extends Controller
         }   
 
         return redirect(route('BN_users'))->with('success', 'บันทึกข้อมูลสำเร็จ !!!');
+    }
+    public function BN_stores_add_action(Request $request)
+    {
+
+        // dd($request);
+        
+        $request->validate([
+            // 'name' => ['required', 'string', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:'.usersModel::class],
+            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+        
+        // $user = usersModel::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
+
+        $Stores = new Stores;
+        $Stores->name = $request->name;
+        $Stores->email = $request->email;
+        $Stores->password = Hash::make($request->password);
+        $Stores->ro = $request->ro;
+        $Stores->alkaline = $request->alkaline;
+        $Stores->oxygen = $request->oxygen;
+        // $Stores->role = $request->role;
+        // $Stores->active = $request->active;
+
+        $Stores->save();
+
+        return redirect(route('BN_stores'))->with('success', 'บันทึกข้อมูลสำเร็จ !!!');
     }
     public function BN_users_edit_action(Request $request)
     {

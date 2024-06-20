@@ -25,6 +25,12 @@ class SideMenu
                 'params' => [],
                 'title' => 'ยูสเซอร์'
             ],
+            'stores' => [
+                'icon' => 'User',
+                'route_name' => 'BN_stores',
+                'params' => [],
+                'title' => 'ร้าน'
+            ],
             'settings' => [
                 'icon' => 'Settings',
                 'title' => 'ตั้งค่า',

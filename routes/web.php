@@ -41,6 +41,8 @@ Route::middleware('store.auth')->group(function() {
     Route::get('thank', [FrontendPageController::class, 'thank']);
     Route::get('chillpay-test', [FrontendPageController::class, 'chillpaytest']);
     Route::post('quantity', [FrontendPageController::class, 'quantity']);
+    Route::post('/update-total', [FrontendPageController::class, 'updateTotal'])->name('updateTotal');
+
 });
 
 
@@ -68,6 +70,17 @@ Route::middleware('auth')->group(function() {
             Route::post('add-action', [UsersController::class, 'BN_users_add_action'])->name('BN_users_add_action');
             Route::get('edit/{id}', [UsersController::class, 'BN_users_edit'])->name('BN_users_edit');
             Route::post('edit-action', [UsersController::class, 'BN_users_edit_action'])->name('BN_users_edit_action');
+
+        });
+
+        Route::prefix('stores')->group(function () {
+
+            Route::get('', [UsersController::class, 'BN_stores'])->name('BN_stores');
+            Route::get('add', [UsersController::class, 'BN_stores_add'])->name('BN_stores_add');
+            Route::post('add-action', [UsersController::class, 'BN_stores_add_action'])->name('BN_stores_add_action');
+            Route::get('edit/{id}', [UsersController::class, 'BN_stores_edit'])->name('BN_stores_edit');
+            Route::get('delete/{id}', [UsersController::class, 'BN_stores_delete'])->name('BN_stores_delete');
+            Route::post('edit-action', [UsersController::class, 'BN_stores_edit_action'])->name('BN_stores_edit_action');
 
         });
         Route::prefix('settings')->group(function () {

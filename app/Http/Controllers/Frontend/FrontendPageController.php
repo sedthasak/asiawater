@@ -152,4 +152,20 @@ class FrontendPageController extends Controller
         }
         return redirect('select-payment');
     }
+
+    public function updateTotal(Request $request)
+    {
+        $increment = $request->input('value');
+        $storeresult = Transactions::create([
+            'stores_id' => Auth::guard('store')->user()->id,
+            'payment_type' => 'coin',
+            'orderno' => date("YmdHis"),
+            'amount' => $increment,
+        ]);
+        $total = session('total');
+        $total += $increment;
+        session(['total' => $total]);
+        return response()->json(['total' => $total]);
+    }
+
 }
