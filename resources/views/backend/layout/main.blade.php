@@ -25,7 +25,7 @@
         <script src="{{asset('myassets/js/ckeditor.js')}}"></script>
         <script src="{{asset('myassets/js/select2.min.js')}}"></script>
 
-        <script src="{{ mix('dist/js/app.js') }}"></script>
+        <script src="{{ asset('dist/js/app.js') }}"></script>
         <!-- END: JS Assets-->
 
         @yield('script')
