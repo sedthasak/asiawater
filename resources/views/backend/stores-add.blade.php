@@ -15,7 +15,7 @@
         <div class="mt-4 flex w-full sm:mt-0 sm:w-auto">
         </div>
     </div>
-    <form method="post" action="{{route('BN_users_add_action')}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('BN_stores_add_action')}}" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-12 gap-6 mt-5">
             <!-- <div class="intro-y col-span-12 lg:col-span-3"></div> -->
