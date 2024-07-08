@@ -35,9 +35,21 @@
     <script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/build/md5.min.js"></script>
     <script>
         var MerchantCode = 'M035190';
-        var OrderNo = '202406101457';// $.now();
+        // var OrderNo = '202407041238';// $.now();
+        function padZero(num, length) {
+            return num.toString().padStart(length, '0');
+        }
+
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = padZero(now.getMonth() + 1, 2);
+        var day = padZero(now.getDate(), 2);
+        var hour = padZero(now.getHours(), 2);
+        var minute = padZero(now.getMinutes(), 2);
+
+        var OrderNo = year + month + day + hour + minute;
         var CustomerId = 'CUS000001';
-        var Amount = 100; // 100 = 1.00
+        var Amount = 2000; // 100 = 1.00
         var ChannelCode = 'bank_qrcode';
         var Currency = '764';
         var LangCode = 'TH';

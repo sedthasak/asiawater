@@ -81,7 +81,7 @@ Route::middleware('auth')->group(function() {
             Route::get('edit/{id}', [UsersController::class, 'BN_stores_edit'])->name('BN_stores_edit');
             Route::get('delete/{id}', [UsersController::class, 'BN_stores_delete'])->name('BN_stores_delete');
             Route::post('edit-action', [UsersController::class, 'BN_stores_edit_action'])->name('BN_stores_edit_action');
-
+            Route::post('edit/{id}/edit-action', [UsersController::class, 'BN_stores_edit_action'])->name('BN_stores_edit_action');
         });
         Route::prefix('settings')->group(function () {
             Route::get('', [BackendPageController::class, 'BN_settings'])->name('BN_settings');

@@ -17,6 +17,18 @@
         </div>
     </div>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div class="lg:flex intro-y mt-5 mb-5">
 
         <div class="relative">
@@ -79,13 +91,11 @@
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                
-                                
-                                <a class="flex items-center" href="{{route('BN_stores_edit', ['id' => $res->id])}}">
-                                    <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> แก้ไข
+                                <a class="flex items-center mr-3" href="{{route('BN_stores_edit', ['id' => $res->id])}}">
+                                    <i data-lucide="edit" class="w-4 h-4 mr-1"></i> แก้ไข
                                 </a>
-                                <a class="flex items-center" href="{{route('BN_stores_delete', ['id' => $res->id])}}">
-                                    <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> ลบข้อมูล
+                                <a class="flex items-center btn-delete" data-id="{{$res->id}}" href="javascript:void(0);">
+                                    <i data-lucide="trash" class="w-4 h-4 mr-1"></i> ลบข้อมูล
                                 </a>
                             </div>
                         </td>
@@ -108,6 +118,7 @@
 @endsection
 
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 <script>
     function applyFilters() {
         var keyword = document.getElementById('keyword').value;
@@ -120,6 +131,26 @@
         }
     }
 
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.btn-delete').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var id = this.getAttribute('data-id');
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "{{ url('stores/delete') }}/" + id;
+                    }
+                })
+            });
+        });
+    });
 </script>
 
 

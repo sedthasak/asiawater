@@ -19,6 +19,7 @@ use Illuminate\Validation\Rules;
 
 use App\Models\User;
 use App\Models\usersModel;
+use App\Models\Store;
 use DB;
 
 class UsersController extends Controller
@@ -75,24 +76,66 @@ class UsersController extends Controller
     }
     public function BN_stores_edit(Request $request, $id)
     {
-        $user = usersModel::find($id);
+        $stores = Store::find($id);
         return view('backend/stores-edit', [ 
             'default_pagename' => 'แก้ไขร้าน',
-            'user' => $user,
+            'stores' => $stores,
         ]);
     }
+    // public function BN_stores_edit_action(Request $request, $id)
+    // {
+        
+    //     Store::where('id', $id)->update(['name'=>$request->name, 'email'=>$request->email, 'password'=>$request->password, 'ro'=>$request->ro, 'alkaline'=>request->alkaline, 'oxygen'=>$request->oxygen]);
+    //     return redirect($this->BN_stores());
+    // }
+
     public function BN_stores_edit_action(Request $request, $id)
     {
-        $user = usersModel::find($id);
-        return view('backend/stores-edit', [ 
-            'default_pagename' => 'แก้ไขร้าน',
-            'user' => $user,
+        // Validate the request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'ro' => 'nullable|string',
+            'alkaline' => 'nullable|string',
+            'oxygen' => 'nullable|string',
+            'password' => 'nullable|string|min:6', // Add password validation rules if needed
         ]);
+
+        // Prepare the data to update
+        $dataToUpdate = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'ro' => $request->ro,
+            'alkaline' => $request->alkaline,
+            'oxygen' => $request->oxygen,
+        ];
+
+        // Check if password is provided
+        if ($request->filled('password')) {
+            $dataToUpdate['password'] = Hash::make($request->password);
+        }
+
+        // Update the store data
+        Store::where('id', $id)->update($dataToUpdate);
+
+        return redirect()->route('BN_stores')->with('success', 'Store updated successfully');
     }
+    
     public function BN_stores_delete(Request $request, $id)
     {
-        DB::table('stores')->where('id', $id)->delete();
-        return redirect()->with('BN_stores');
+        // Find the store by id
+        $store = Store::find($id);
+
+        // Check if store exists
+        if (!$store) {
+            return redirect()->route('BN_stores')->with('error', 'Store not found');
+        }
+
+        // Delete the store
+        $store->delete();
+
+        // Redirect back with a success message
+        return redirect()->route('BN_stores')->with('success', 'Store deleted successfully');
     }
 
     public function BN_stores(Request $request)
@@ -195,7 +238,7 @@ class UsersController extends Controller
     public function BN_stores_add_action(Request $request)
     {
 
-        // dd($request);
+        // return dd($request);
         
         $request->validate([
             // 'name' => ['required', 'string', 'max:255'],
@@ -209,7 +252,7 @@ class UsersController extends Controller
         //     'password' => Hash::make($request->password),
         // ]);
 
-        $Stores = new Stores;
+        $Stores = new Store;
         $Stores->name = $request->name;
         $Stores->email = $request->email;
         $Stores->password = Hash::make($request->password);
