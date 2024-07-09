@@ -19,6 +19,8 @@ use App\Models\image_mosaic;
 use App\Models\OptionsModel;
 
 use Intervention\Image\Facades\Image;
+use App\Exports\SalesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BackendPageController extends Controller
 {
@@ -300,11 +302,34 @@ class BackendPageController extends Controller
         // ]);
     }
 
+    public function index()
+    {
+        return view('backend.backend-dashboard', [
+            'default_pagename' => 'แดชบอร์ด',
+        ]);
+    }
 
-    
-    
+    public function filter(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
 
+        $sales = DB::table('transactions')
+            ->select('stores.name', DB::raw('SUM(transactions.amount) as total_sales'))
+            ->join('stores', 'transactions.stores_id', '=', 'stores.id')
+            ->whereBetween('transactions.created_at', [$start_date, $end_date])
+            ->groupBy('stores.name')
+            ->orderByDesc('total_sales')
+            ->get();
 
-    
-    
+        return response()->json($sales);
+    }
+
+    public function export(Request $request)
+    {
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        return Excel::download(new SalesExport($start_date, $end_date), 'sales.xlsx');
+    }
 }

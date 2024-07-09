@@ -148,20 +148,20 @@ class UsersController extends Controller
         $query = DB::table('stores')
             ->orderBy('id', 'desc');
 
-        // if ($request->filled('keyword')) {
-        //     $keyword = $request->input('keyword');
-        //     $query->where(function ($query) use ($keyword) {
-        //         $query->where('name', 'LIKE', '%' . $keyword . '%')
-        //             ->orWhere('email', 'LIKE', '%' . $keyword . '%');
-        //     });
-        // }
+        if ($request->filled('keyword')) {
+            $keyword = $request->input('keyword');
+            $query->where(function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%')
+                    ->orWhere('email', 'LIKE', '%' . $keyword . '%');
+            });
+        }
 
         $resultPerPage = 24;
         $query = $query->paginate($resultPerPage);
 
         return view('backend/stores', [ 
             'default_pagename' => 'ร้าน',
-            'User' => $stores,
+            'stores' => $stores,
             'query' => $query,
         ]);
     }

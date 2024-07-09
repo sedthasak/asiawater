@@ -27,9 +27,10 @@ Route::middleware('store.auth')->group(function() {
         // return redirect('/dashboard');
     });
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
+    
 
     Route::get('detailwater-ro', [FrontendPageController::class, 'detailwaterro']);
     Route::get('detailwater-alkaline', [FrontendPageController::class, 'detailwateralkaline']);
@@ -61,6 +62,9 @@ Route::middleware('auth')->group(function() {
 
     Route::prefix('backend')->group(function () {
 
+        Route::get('/dashboard', [BackendPageController::class, 'index'])->name('dashboard');
+        Route::post('/dashboard/filter', [BackendPageController::class, 'filter'])->name('dashboard.filter');
+        Route::post('/dashboard/export', [BackendPageController::class, 'export'])->name('dashboard.export');
         Route::get('/', [BackendPageController::class, 'backendDashboard'])->name('backendDashboard');
 
         Route::prefix('users')->group(function () {
@@ -80,7 +84,7 @@ Route::middleware('auth')->group(function() {
             Route::post('add-action', [UsersController::class, 'BN_stores_add_action'])->name('BN_stores_add_action');
             Route::get('edit/{id}', [UsersController::class, 'BN_stores_edit'])->name('BN_stores_edit');
             Route::get('delete/{id}', [UsersController::class, 'BN_stores_delete'])->name('BN_stores_delete');
-            Route::post('edit-action', [UsersController::class, 'BN_stores_edit_action'])->name('BN_stores_edit_action');
+            // Route::post('edit-action', [UsersController::class, 'BN_stores_edit_action'])->name('BN_stores_edit_action');
             Route::post('edit/{id}/edit-action', [UsersController::class, 'BN_stores_edit_action'])->name('BN_stores_edit_action');
         });
         Route::prefix('settings')->group(function () {

@@ -122,7 +122,7 @@
 <script>
     function applyFilters() {
         var keyword = document.getElementById('keyword').value;
-        var newUrl = `{{ route('BN_users') }}?keyword=${keyword}`;
+        var newUrl = `{{ route('BN_stores') }}?keyword=${keyword}`;
         window.location.href = newUrl;
     }
     function handleEnter(event) {
@@ -142,10 +142,16 @@
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel',
+                    customClass: {
+                        confirmButton: 'btn btn-primary',
+                        cancelButton: 'btn btn-secondary'
+                    },
+                    buttonsStyling: false // Use Bootstrap classes instead of default SweetAlert2 styles
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = "{{ url('stores/delete') }}/" + id;
+                        window.location.href = "{{ url('backend/stores/delete') }}/" + id;
                     }
                 })
             });
