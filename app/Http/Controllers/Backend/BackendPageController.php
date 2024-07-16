@@ -19,8 +19,8 @@ use App\Models\image_mosaic;
 use App\Models\OptionsModel;
 
 use Intervention\Image\Facades\Image;
-use App\Exports\SalesExport;
-use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class BackendPageController extends Controller
 {
@@ -330,6 +330,35 @@ class BackendPageController extends Controller
         $start_date = $request->start_date;
         $end_date = $request->end_date;
 
-        return Excel::download(new SalesExport($start_date, $end_date), 'sales.xlsx');
+        $sales = DB::table('transactions')
+            ->select('stores.name', DB::raw('SUM(transactions.amount) as total_sales'))
+            ->join('stores', 'transactions.stores_id', '=', 'stores.id')
+            ->whereBetween('transactions.created_at', [$start_date, $end_date])
+            ->groupBy('stores.name')
+            ->orderByDesc('total_sales')
+            ->get();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Add headers in Thai
+        $sheet->setCellValue('A1', 'ชื่อร้านค้า');
+        $sheet->setCellValue('B1', 'ยอดขายรวม');
+
+        // Add data
+        $row = 2;
+        foreach ($sales as $sale) {
+            $sheet->setCellValue('A' . $row, $sale->name);
+            $sheet->setCellValue('B' . $row, $sale->total_sales);
+            $row++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+
+        $fileName = 'sales.xlsx';
+        $tempFilePath = storage_path('app/public/' . $fileName);
+        $writer->save($tempFilePath);
+
+        return response()->download($tempFilePath)->deleteFileAfterSend(true);
     }
 }
