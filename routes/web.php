@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\BackendPageController;
 use App\Http\Controllers\Backend\UsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\FrontendPageController;
+use App\Http\Controllers\Frontend\LianlianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +44,7 @@ Route::middleware('store.auth')->group(function() {
     Route::get('chillpay-test', [FrontendPageController::class, 'chillpaytest']);
     Route::post('quantity', [FrontendPageController::class, 'quantity']);
     Route::post('/update-total', [FrontendPageController::class, 'updateTotal'])->name('updateTotal');
-
+    Route::get('lianliantest', [LianlianController::class, 'lianliantest'])->name('lianliantest');
 });
 
 
