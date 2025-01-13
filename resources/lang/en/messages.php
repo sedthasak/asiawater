@@ -92,6 +92,27 @@ return [
     'tel' => 'Tel',
     'tel' => 'Tel',
     'tel' => 'Tel',
+
+
+    'TextHeader' => 'Hey, what’s up?',
+    'TextBody' => 'Please select water type',
+    'TextHeaderNav1' => 'Clean drinking water must be',
+    'TextHeaderNav2' => 'drinking water.',
+    'ro' => 'r.o.',
+    'ro2' => 'water',
+    'alkaline' => 'alkaline',
+    'alkaline2' => 'water',
+    'oxygen' => 'oxygen',
+    'oxygen2' => 'water',
+    'rowater' => 'R.O. Water',
+    'rodesc' => 'R.O. Drinking Water (Reverse Osmosis) R.O. drinking water is filtered through a system that ensures a high level of purity. With an advanced filtration precision of 0.001 microns, it delivers water that is safe and healthy for consumption.',
+    'done' => 'done',
+    'alkilinewater' => 'Alkiline Water',
+    'alkilinedesc' => 'Alkaline water, also known as alkaline drinking water, has a naturally high pH level and is rich in essential minerals needed by the body. Its smaller molecular structure allows the body to easily absorb the water, making it more beneficial for health compared to regular water.
+
+Alkaline water helps maintain an acid-alkaline balance that suits the human body, protecting it from excess acid, which is a key cause of various illnesses. It also aids in detoxifying the body at a cellular level, fighting free radicals, and boosting the immune system, helping the body become stronger and more resilient.',
+    'oxygenwater' => 'Oxygen Water',
+    'oxygendesc' => 'Oxygen drinking water contains a higher level of dissolved oxygen compared to regular drinking water, achieved through Micro Nanobubble Technology. This water helps increase the oxygen level in the bloodstream, providing a refreshing and energizing effect. It also enhances blood circulation and reduces fatigue caused by heavy workloads.',
 ];
 
 ?>

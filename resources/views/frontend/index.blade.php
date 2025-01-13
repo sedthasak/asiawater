@@ -2,10 +2,10 @@
 @extends('frontend.layouts.header')
     @include('frontend.includes.inc_topmenu')
     <div class="col-Language">
-        <a class="Box-Language" href="">
+        <a class="Box-Language" href="{{ url('set-language/th') }}">
             <img class="IconFlag" src="{{ asset('asiawater/images/icon-th.svg') }}" alt="">
         </a>
-        <a class="Box-Language" href="">
+        <a class="Box-Language" href="{{ url('set-language/en') }}">
             <img class="IconFlag" src="{{ asset('asiawater/images/icon-eng.svg') }}" alt="">
         </a>
     </div>
@@ -16,10 +16,10 @@
 
     <div class="Col-Text-HeadHome">
         <p class="text-center TextHeader">
-            Hey, what’s up?
+            {{ __('messages.TextHeader') }}
         </p>
         <p class="text-center TextBody">
-            Please select water type
+            {{ __('messages.TextBody') }}
         </p>
     </div>
 
@@ -29,10 +29,10 @@
                 <a href="{{ url('detailwater-ro') }}" class="btn BoxSelect">
                     <img class="Image-wt" src="{{ asset('asiawater/images/ro.gif') }}" alt="">
                     <p class="text-center mt-4 Text-wt">
-                        R.O.
+                        {{ __('messages.ro') }}
                     </p>
                     <p class="text-center mt-0 Text-wt2">
-                        Water
+                        {{ __('messages.ro2') }}
                     </p>
                 </a>
             </div>
@@ -40,10 +40,10 @@
                 <a href="{{ url('detailwater-alkaline') }}" class="btn BoxSelect">
                     <img class="Image-wt" src="{{ asset('asiawater/images/oxygen.gif') }}" alt="">
                     <p class="text-center mt-4 Text-wt">
-                        alkaline
+                        {{ __('messages.alkaline') }}
                     </p>
                     <p class="text-center mt-0 Text-wt2">
-                        Water
+                        {{ __('messages.alkaline2') }}
                     </p>
                 </a>
             </div>
@@ -51,10 +51,10 @@
                 <a href="{{ url('detailwater-oxygen') }}" class="btn BoxSelect">
                     <img class="Image-wt" src="{{ asset('asiawater/images/love.gif') }}" alt="">
                     <p class="text-center mt-4 Text-wt">
-                        oxygen
+                        {{ __('messages.oxygen') }}
                     </p>
                     <p class="text-center mt-0 Text-wt2">
-                        Water
+                        {{ __('messages.oxygen2') }}
                     </p>
                 </a>
             </div>

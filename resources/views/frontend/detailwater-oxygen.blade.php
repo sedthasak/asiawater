@@ -18,12 +18,10 @@
                         </a>
                         <img class="ImgDetail" src="{{ asset('asiawater/images/love.gif') }}" alt="">
                         <p class="Text-wt-detail">
-                            Oxygen Water
+                            {{ __('messages.oxygenwater') }}
                         </p>
                         <p class="TextDetail mt-4 mb-4">
-                            น้ำดื่มออกซิเจน
-                            คือน้ำดื่มที่มีค่าออกซิเจนที่ละลายอิ่มตัวในน้ำสูงกว่าน้ำดื่มทั่วไป ด้วยวิธี Micro Nanobubble Technology เพิ่มปริมาณก๊าช
-                            Oxygen ในเลือด ช่วยเติมความสดชื่น กระปรี้กระเปร่า ช่วยเพิ่มการไหลเวียนของโลหิต ลดความอ่อนเพลียจากการทำงานหนัก
+                            {{ __('messages.oxygendesc') }}
                         </p>
                     </div>
                     <div class="ColPrice">
@@ -37,7 +35,7 @@
                             <button class="plus" aria-label="Increase">&plus;</button>
                         </div>
 
-                        <button id="btnsubmit" type="button" class="btn ButtonDone">DONE</button>
+                        <button id="btnsubmit" type="button" class="btn ButtonDone">{{ __('messages.done') }}</button>
                     </div>
                 </div>
             </div>

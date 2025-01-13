@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\UsersController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\FrontendPageController;
 use App\Http\Controllers\Frontend\LianlianController;
+use App\Http\Controllers\Frontend\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +24,7 @@ use App\Http\Controllers\Frontend\LianlianController;
 
 
 Route::middleware('store.auth')->group(function() {
-    Route::get('/', function () {
-        return view('frontend.index');
-        // return redirect('/dashboard');
-    });
+    
 
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
@@ -45,6 +43,7 @@ Route::middleware('store.auth')->group(function() {
     Route::post('quantity', [FrontendPageController::class, 'quantity']);
     Route::post('/update-total', [FrontendPageController::class, 'updateTotal'])->name('updateTotal');
     Route::get('lianliantest', [LianlianController::class, 'lianliantest'])->name('lianliantest');
+    Route::get('set-language/{locale}', [LanguageController::class, 'setLanguage']);
 });
 
 
@@ -54,6 +53,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/', function () {
+    return view('frontend.index');
+    // return redirect('/dashboard');
+});
 Route::get('login-system', [AuthController::class, 'backendLogin'])->name('backendLogin');
 Route::post('frontend-login-submit', [LoginController::class, 'authenticate'])->name('frontendloginsubmit');
 

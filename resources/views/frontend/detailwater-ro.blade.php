@@ -18,11 +18,10 @@
                         </a>
                         <img class="ImgDetail" src="{{ asset('asiawater/images/ro.gif') }}" alt="">
                         <p class="Text-wt-detail">
-                            R.O. Water
+                            {{ __('messages.rowater') }}
                         </p>
                         <p class="TextDetail mt-4 mb-4">
-                            น้ำดื่ม R.O.(Reverse Osmosis) น้ำดื่มRo เป็นระบบกรองน้ำซึ่งจะทำให้น้ำที่ได้มานั้นก่อนข้างที่จะมีความบริสุทธิ์สูง และด้วยความละเอียดในการ
-                            กรอง 0.00 1 Micron ส่งผลให้เป็นน้ำดื่มที่บริโภคได้อย่างปลอดภัย
+                            {{ __('messages.rodesc') }}
                         </p>
                     </div>
                     <div class="ColPrice">
@@ -36,7 +35,7 @@
                             <button class="plus" aria-label="Increase">&plus;</button>
                         </div>
 
-                        <button id="btnsubmit" type="button" class="btn ButtonDone">DONE</button>
+                        <button id="btnsubmit" type="button" class="btn ButtonDone">{{ __('messages.done') }}</button>
                     </div>
                 </div>
             </div>

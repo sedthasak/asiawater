@@ -18,14 +18,10 @@
                         </a>
                         <img class="ImgDetail" src="{{ asset('asiawater/images/oxygen.gif') }}" alt="">
                         <p class="Text-wt-detail">
-                            Alkiline Water
+                            {{ __('messages.alkilinewater') }}
                         </p>
                         <p class="TextDetail mt-4 mb-4">
-                            น้ำดื่มอัลคาไลน์ (Alkiline Water)
-                            น้ำอัลคาไลน์ หรือน้ำด่าง น้ำดื่มที่มีค่าความเป็นด่าง รวมถึงมีแว่ธาตุที่ร่างกายต้องการผสมอยู่อย่างมากมาย น้ำอัลคาไลน์เป็น
-                            น้ำที่มีโมลกุลขนาดล็ก ทำให้ง่ายที่ร่างกายจะทำการดูดซึมน้ำเข้าไปใช้ประโยขน์ยังส่วนต่างๆ จึงทำให้น้ำด่างมีประโยชน์ต่อสุขภาพมากกว่าน้ำธรรมดา อีกทั้งยังมีความเป็นกรดค่างที่ให้สมดุล พอเหมาะกับร่างกายของมนุษข์ จึงเข้าไปช่วยป้องกันร่างกาย
-                            จากการทำลายของกรดส่วนเกินที่เป็นต้นเหตุของโรคร้ายต่างๆ และช่ายฟื้นฟูร่างกายด้วยการชะล้างของเสียลงลึกถึงระดับเซลล์
-                            ช่วยต่อต้านอนุมูลอิสระ ทำให้ร่างกายสร้างภูมิคุ้มกันได้ง่ายและแเข็งแรงมากขึ้นนั่นเอง
+                            {{ __('messages.alkilinedesc') }}
                         </p>
                     </div>
                     <div class="ColPrice">
@@ -39,7 +35,7 @@
                             <button class="plus" aria-label="Increase">&plus;</button>
                         </div>
 
-                        <button id="btnsubmit" type="button" class="btn ButtonDone">DONE</button>
+                        <button id="btnsubmit" type="button" class="btn ButtonDone">{{ __('messages.done') }}</button>
                     </div>
                 </div>
             </div>

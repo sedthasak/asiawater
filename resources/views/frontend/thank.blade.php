@@ -13,11 +13,11 @@
 
                 <div class="col-10 WarperCol-TextHeader">
                     <p class="TextHeaderNav">
-                        Clean drinking water must be
+                        {{ __('messages.TextHeaderNav1')}}
                         <span class="TextHeaderNav-Blue">
                             “chang smile”
                         </span>
-                        drinking water.
+                        {{ __('messages.TextHeaderNav2')}}
                     </p>
                 </div>
             </div>
@@ -27,10 +27,10 @@
     <div class="container">
 
         <div class="col-Language">
-            <a class="Box-Language" href="">
+            <a class="Box-Language" href="{{ url('set-language/th') }}">
                 <img class="IconFlag" src="./images/icon-th.svg" alt="">
             </a>
-            <a class="Box-Language" href="">
+            <a class="Box-Language" href="{{ url('set-language/en') }}">
                 <img class="IconFlag" src="./images/icon-eng.svg" alt="">
             </a>
         </div>

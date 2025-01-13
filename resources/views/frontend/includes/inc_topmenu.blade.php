@@ -26,11 +26,11 @@
                 </div>
                 <div class="col-10 WarperCol-TextHeader">
                     <p class="TextHeaderNav">
-                        Clean drinking water must be
+                        {{ __('messages.TextHeaderNav1')}}
                         <span class="TextHeaderNav-Blue">
                             “chang smile”
                         </span>
-                        drinking water.
+                        {{ __('messages.TextHeaderNav2')}}
                     </p>
                 </div>
             </div>
