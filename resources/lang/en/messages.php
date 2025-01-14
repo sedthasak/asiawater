@@ -113,6 +113,17 @@ return [
 Alkaline water helps maintain an acid-alkaline balance that suits the human body, protecting it from excess acid, which is a key cause of various illnesses. It also aids in detoxifying the body at a cellular level, fighting free radicals, and boosting the immune system, helping the body become stronger and more resilient.',
     'oxygenwater' => 'Oxygen Water',
     'oxygendesc' => 'Oxygen drinking water contains a higher level of dissolved oxygen compared to regular drinking water, achieved through Micro Nanobubble Technology. This water helps increase the oxygen level in the bloodstream, providing a refreshing and energizing effect. It also enhances blood circulation and reduces fatigue caused by heavy workloads.',
+    'baht' => 'baht',
+    'paymentoption' => 'Payment options',
+    'cash' => 'cash',
+    'qrcode' => 'QR CODE',
+    'flushthewater' => 'Please flush the water',
+    'bringacontain' => 'Please bring a container. and gently press to release water',
+    'remain' => 'remaining balance',
+    'start' => 'start',
+    'stop' => 'stop',
+    'thank' => 'Thank You',
+    'thankfor' => 'Thank you for using “CHANG SMILE” dispenser service.',
 ];
 
 ?>

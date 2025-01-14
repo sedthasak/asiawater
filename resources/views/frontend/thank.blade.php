@@ -45,10 +45,10 @@
 
         <div class="Col-Text-HeadHome">
             <p class="text-center TextHeader">
-                Thank You
+                {{ __('messages.thank') }}
             </p>
             <p class="text-center TextBodyThankyou">
-                Thank you for using AQUA water dispenser service.
+                {{ __('messages.thankfor') }}
             </p>
         </div>
 

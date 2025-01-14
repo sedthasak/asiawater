@@ -19,15 +19,15 @@
                         </a>
                         <img class="ImgDetail" src="{{ asset('asiawater/images/water-drop.gif') }}" alt="">
                         <p class="Text-wt-detail-Select">
-                            {{session('watertype')}}
+                            @if (session('watertype') == 'ro'){{ __('messages.rowater') }} @elseif (session('watertype') == 'alkaline'){{  __('messages.alkalinewater') }} @elseif (session('watertype') == 'oxygen'){{ __('messages.oxygenwater') }}  @endif
                         </p>
                         <div class="BoxCol-Price-Select">
                         </div>
                         <p class="Text-Paymentopton">
-                            Please flush the water
+                            {{ __('messages.flushthewater') }}
                         </p>
                         <p class="TextDetail text-center mb-3">
-                            Please bring a container. and gently press to release water
+                            {{ __('messages.bringacontain') }}
                         </p>
                         <div class="Div-Paymentoption">
                             <div class="ShowNumber">
@@ -35,17 +35,17 @@
                                     @if(!empty(session('total'))){{session('total')}}@else {{'0'}} @endif
                                 </p>
                                 <p class="Text-Detail-Shownumber">
-                                    remaining balance
+                                    {{ __('messages.remain') }}
                                 </p>
                             </div>
                             <div class="Warp-BoxButton-Push">
                                 <button class="btn ButtonStart">
                                     <img src="{{ asset('asiawater/images/play-as.png') }}" alt="">
-                                    START
+                                    {{ __('messages.start') }}
                                 </button>
                                 <button class="btn ButtonStart">
                                     <img src="{{ asset('asiawater/images/stop-as.png') }}" alt="">
-                                    STOP
+                                    {{ __('messages.stop') }}
                                 </button>
                             </div>
                         </div>
