@@ -13,7 +13,8 @@
     <div class="Col-Logo-Home">
         <img src="{{ asset('asiawater/images/logo.jpg') }}" alt="">
     </div>
-
+    <input name="pages" type="hidden" value="home">
+    <input name="playtimes" type="hidden" value="0">
     <div class="Col-Text-HeadHome">
         <p class="text-center TextHeader">
             {{ __('messages.TextHeader') }}

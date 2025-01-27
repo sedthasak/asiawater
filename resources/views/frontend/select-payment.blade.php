@@ -8,7 +8,8 @@
         <div class="Col-Logo-Home mt-5 mb-5">
             <img src="{{ url('asiawater/images/logo.jpg') }}" alt="">
         </div>
-
+        <input name="pages" type="hidden" value="payment">
+        <input name="playtimes" type="hidden" value="0">
         <div class="BoxBody-White">
             <div class="container">
                 <div class="WarpCol-Detail">

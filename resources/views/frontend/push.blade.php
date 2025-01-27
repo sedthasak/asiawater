@@ -9,7 +9,9 @@
         <div class="Col-Logo-Home mt-5 mb-5">
             <img src="{{ asset('asiawater/images/logo.jpg') }}" alt="">
         </div>
-
+        <input name="pages" type="hidden" value="push">
+        <input name="total" type="hidden" value="@if(!empty(session('total'))){{session('total')}}@else {{'0'}} @endif">
+        <input name="water" type="hidden" value="@if (session('watertype') == 'ro'){{'1'}} @elseif (session('watertype') == 'alkaline'){{'2'}} @elseif (session('watertype') == 'oxygen'){{'3'}}  @endif">
         <div class="BoxBody-White">
             <div class="container">
                 <div class="WarpCol-Detail">
