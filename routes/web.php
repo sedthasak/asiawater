@@ -43,6 +43,8 @@ Route::middleware('store.auth')->group(function() {
     Route::post('quantity', [FrontendPageController::class, 'quantity']);
     Route::post('/update-total', [FrontendPageController::class, 'updateTotal'])->name('updateTotal');
     Route::get('lianliantest', [LianlianController::class, 'lianliantest'])->name('lianliantest');
+    Route::get('/payment/process', [LianlianController::class, 'processPayment'])->name('payment.process');
+    Route::get('/lianlianqr', [LianlianController::class, 'lianlianqr'])->name('lianlianqr');
     Route::get('set-language/{locale}', [LanguageController::class, 'setLanguage']);
 });
 
@@ -59,7 +61,10 @@ Route::get('/', function () {
 });
 Route::get('login-system', [AuthController::class, 'backendLogin'])->name('backendLogin');
 Route::post('frontend-login-submit', [LoginController::class, 'authenticate'])->name('frontendloginsubmit');
-
+// Route::get('/set-cookie', [LianlianController::class, 'setCookieExample']);
+Route::get('/set-cookie', function () {
+    return 'Cookie has been set';
+})->middleware('set.cookie');
 
 Route::middleware('auth')->group(function() {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');        

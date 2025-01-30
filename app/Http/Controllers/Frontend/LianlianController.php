@@ -1,16 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Services\PaymentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 use App\Models\sellsModel;
 use App\Models\preordersModel;
 use App\Models\customersModel;
-
+use Llgp\LlgpSdkPhp\LLPayClient;
+use Llgp\LlgpSdkPhp\Request\QRPromptPayRequest;
+use Llgp\LlgpSdkPhp\Constants\LLPayConstant;
+use Llgp\LlgpSdkPhp\Model\Customer;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class LianlianController extends Controller
 {
@@ -205,5 +210,61 @@ EdRdNS9/h4J1oY45byxigpfPjusjSwgb86d7TLMiYxI1e3ab2Hk=
     
         return $response;
     }
-    
+
+    private $payClient;
+
+    public function __construct()
+    {
+        $this->payClient = new LLPayClient(env('LIANLIAN_MERCHANT_NO'), env('LIANLIAN_PRIVATE_KEY'), env('LIANLIAN_PUBLIC_KEY'));
+    }
+
+    public function processPayment(Request $request)
+    {
+        $time = date('YmdHis', time());
+        $payRequest = new QRPromptPayRequest();
+        $payRequest->merchant_id = env('LIANLIAN_MERCHANT_NO');
+        $payRequest->service = LLPayConstant::QR_PROMPT_SERVICE;
+        $payRequest->version = LLPayConstant::SERVICE_VERSION;
+        $payRequest->merchant_order_id = 'P' . $time;
+        $payRequest->order_currency = 'THB';
+        $payRequest->order_amount = '1.00';
+        $payRequest->order_desc = 'test qr-prompt pay order';
+        $payRequest->payment_method = LLPayConstant::THAI_QR;
+        $payRequest->notify_url = env('LIANLIAN_NOTIFY_URL');
+        $payRequest->redirect_url = env('LIANLIAN_NOTIFY_URL');
+        $customer = new Customer();
+        $customer->full_name = 'Joe.Ye';
+        $customer->merchant_user_id = '10086';
+        $payRequest->customer = $customer;
+
+        $payRequestJson = json_encode($payRequest);
+        file_put_contents("log.txt", "qrPromptPayRequest=$payRequestJson\n", FILE_APPEND);
+
+        $result = $this->payClient->execute($payRequest);
+
+        $resultJson = json_encode($result);
+        file_put_contents("log.txt", "result=$resultJson\n", FILE_APPEND);
+
+        if ($result['code'] == 200000 && $result['message'] == 'Success') {
+            if ($result['sign_verify'] === true) {
+                $qrPromptPayResponse = QRPromptPayResponse::fromMap($result['data']);
+                return json_encode($qrPromptPayResponse, JSON_PRETTY_PRINT);
+            } else {
+                return 'please check the `$lianLianPublicKey` configuration is correct';
+            }
+        } else {
+            return $resultJson;
+        }
+    }
+
+    public function lianlianqr() {
+        return view('frontend.lianlian-qr');
+    }
+
+    public function setCookieExample(Request $request)
+    {
+        $response = response('Cookie Set!');
+        $response->cookie('name', 'value', 60); // ตั้งค่า cookie 'name' กับค่า 'value' ใช้งานได้ 60 นาที
+        return $response;
+    }
 }

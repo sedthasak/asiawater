@@ -72,4 +72,8 @@ class Kernel extends HttpKernel
         'job_access' => \App\Http\Middleware\job_access::class,
         'store.auth' => \App\Http\Middleware\RedirectIfNotStore::class,
     ];
+
+    protected $routeMiddleware = [
+        'set.cookie' => \App\Http\Middleware\SetCookieMiddleware::class,
+    ];
 }
